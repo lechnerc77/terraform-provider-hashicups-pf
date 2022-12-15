@@ -19,7 +19,7 @@ var _ provider.Provider = (*hashicupsProvider)(nil)
 type hashicupsProvider struct{}
 
 func (p *hashicupsProvider) Metadata(_ context.Context, _ provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "http"
+	resp.TypeName = "hashicups"
 }
 
 func (p *hashicupsProvider) Schema(context.Context, provider.SchemaRequest, *provider.SchemaResponse) {
