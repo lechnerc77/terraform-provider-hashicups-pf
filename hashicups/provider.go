@@ -54,7 +54,7 @@ func (p *hashicupsProvider) Schema(_ context.Context, req provider.SchemaRequest
 
 func (p *hashicupsProvider) Configure(ctx context.Context, req provider.ConfigureRequest, res *provider.ConfigureResponse) {
 
-	tflog.Debug(ctx, "Configure called")
+	tflog.Info(ctx, "Configuring HashiCups client")
 
 	// Load configuration into model
 	var config hashicupsProviderModel
@@ -150,6 +150,13 @@ func (p *hashicupsProvider) Configure(ctx context.Context, req provider.Configur
 		return
 	}
 
+	ctx = tflog.SetField(ctx, "hashicups_host", host)
+	ctx = tflog.SetField(ctx, "hashicups_username", username)
+	ctx = tflog.SetField(ctx, "hashicups_password", password)
+	ctx = tflog.MaskFieldValuesWithFieldKeys(ctx, "hashicups_password")
+
+	tflog.Debug(ctx, "Creating HashiCups client")
+
 	// Create a new HashiCups client using the configuration values
 	client, err := hashicups.NewClient(&host, &username, &password)
 	if err != nil {
@@ -165,6 +172,8 @@ func (p *hashicupsProvider) Configure(ctx context.Context, req provider.Configur
 	// type Configure methods.
 	res.DataSourceData = client
 	res.ResourceData = client
+
+	tflog.Info(ctx, "Configured HashiCups client", map[string]any{"success": true})
 }
 
 func (p *hashicupsProvider) Resources(context.Context) []func() resource.Resource {
