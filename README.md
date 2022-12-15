@@ -31,3 +31,11 @@ Run the following command to initialize the workspace and apply the sample confi
 ```shell
 $ terraform init && terraform apply
 ```
+
+## Setup local provider
+
+Place the `terraform.rc` file into `C:\Users\I550309\AppData\Roaming`
+
+## API backend
+
+Check <https://developer.hashicorp.com/terraform/tutorials/providers-plugin-framework/providers-plugin-framework-provider-configure#start-hashicups-locally> for instruction on how to start API backend
