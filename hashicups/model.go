@@ -30,3 +30,26 @@ type coffeesModel struct {
 type coffeesIngredientsModel struct {
 	ID types.Int64 `tfsdk:"id"`
 }
+
+// orderResourceModel maps the resource schema data.
+type orderResourceModel struct {
+	ID          types.String     `tfsdk:"id"`
+	Items       []orderItemModel `tfsdk:"items"`
+	LastUpdated types.String     `tfsdk:"last_updated"`
+}
+
+// orderItemModel maps order item data.
+type orderItemModel struct {
+	Coffee   orderItemCoffeeModel `tfsdk:"coffee"`
+	Quantity types.Int64          `tfsdk:"quantity"`
+}
+
+// orderItemCoffeeModel maps coffee order item data.
+type orderItemCoffeeModel struct {
+	ID          types.Int64   `tfsdk:"id"`
+	Name        types.String  `tfsdk:"name"`
+	Teaser      types.String  `tfsdk:"teaser"`
+	Description types.String  `tfsdk:"description"`
+	Price       types.Float64 `tfsdk:"price"`
+	Image       types.String  `tfsdk:"image"`
+}

@@ -176,8 +176,12 @@ func (p *hashicupsProvider) Configure(ctx context.Context, req provider.Configur
 	tflog.Info(ctx, "Configured HashiCups client", map[string]any{"success": true})
 }
 
-func (p *hashicupsProvider) Resources(context.Context) []func() resource.Resource {
-	return nil
+func (p *hashicupsProvider) Resources(ctx context.Context) []func() resource.Resource {
+
+	tflog.Warn(ctx, "Resources data fetched")
+	return []func() resource.Resource{
+		NewOrderResource,
+	}
 }
 
 func (p *hashicupsProvider) DataSources(context.Context) []func() datasource.DataSource {
