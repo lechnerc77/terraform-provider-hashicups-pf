@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/hashicorp-demoapp/hashicups-client-go"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -23,6 +24,7 @@ func NewOrderResource() resource.Resource {
 
 var _ resource.Resource = (*orderResource)(nil)
 var _ resource.ResourceWithConfigure = (*orderResource)(nil)
+var _ resource.ResourceWithImportState = (*orderResource)(nil)
 
 // Metadata returns the resource type name.
 func (r *orderResource) Metadata(_ context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -274,4 +276,9 @@ func (r *orderResource) Configure(ctx context.Context, req resource.ConfigureReq
 
 	r.client = req.ProviderData.(*hashicups.Client)
 
+}
+
+func (r *orderResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	// Retrieve import ID and save to id attribute
+	resource.ImportStatePassthroughID(ctx, path.Root("id"), req, resp)
 }
