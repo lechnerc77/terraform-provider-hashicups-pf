@@ -35,43 +35,63 @@ func (r *orderResource) Metadata(_ context.Context, req resource.MetadataRequest
 
 func (r *orderResource) Schema(_ context.Context, req resource.SchemaRequest, res *resource.SchemaResponse) {
 	res.Schema = schema.Schema{
+		Description:         "Manages an order.",
+		MarkdownDescription: "Manages an order.",
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "Numeric identifier of the order.",
+				MarkdownDescription: "Numeric identifier of the order.",
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
 			},
 			"last_updated": schema.StringAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "Timestamp of the last Terraform update of the order.",
+				MarkdownDescription: "Timestamp of the last Terraform update of the order.",
 			},
 			"items": schema.ListNestedAttribute{
 				Required: true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"quantity": schema.Int64Attribute{
-							Required: true,
+							Required:            true,
+							Description:         "Count of this item in the order.",
+							MarkdownDescription: "Count of this item in the order.",
 						},
 						"coffee": schema.SingleNestedAttribute{
 							Required: true,
 							Attributes: map[string]schema.Attribute{
 								"id": schema.Int64Attribute{
-									Required: true,
+									Required:            true,
+									Description:         "Numeric identifier of the coffee.",
+									MarkdownDescription: "Numeric identifier of the coffee.",
 								},
 								"name": schema.StringAttribute{
-									Computed: true,
+									Computed:            true,
+									Description:         "Product name of the coffee.",
+									MarkdownDescription: "Product name of the coffee.",
 								},
 								"teaser": schema.StringAttribute{
-									Computed: true,
+									Computed:            true,
+									Description:         "Fun tagline for the coffee.",
+									MarkdownDescription: "Fun tagline for the coffee.",
 								},
 								"description": schema.StringAttribute{
-									Computed: true,
+									Computed:            true,
+									Description:         "Product description of the coffee.",
+									MarkdownDescription: "Product description of the coffee.",
 								},
 								"price": schema.Float64Attribute{
-									Computed: true,
+									Computed:            true,
+									Description:         "Suggested cost of the coffee.",
+									MarkdownDescription: "Suggested cost of the coffee.",
 								},
 								"image": schema.StringAttribute{
-									Computed: true,
+									Computed:            true,
+									Description:         "URI for an image of the coffee.",
+									MarkdownDescription: "URI for an image of the coffee.",
 								},
 							},
 						},

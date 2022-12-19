@@ -34,17 +34,20 @@ func (p *hashicupsProvider) Schema(_ context.Context, req provider.SchemaRequest
 			"host": schema.StringAttribute{
 				Optional:            true,
 				Validators:          []validator.String{},
-				MarkdownDescription: "Hostname",
+				MarkdownDescription: "URI for HashiCups API. May also be provided via HASHICUPS_HOST environment variable.",
+				Description:         "URI for HashiCups API. May also be provided via HASHICUPS_HOST environment variable.",
 			},
 			"username": schema.StringAttribute{
 				Optional:            true,
 				Validators:          []validator.String{},
-				MarkdownDescription: "Username",
+				MarkdownDescription: "Username for HashiCups API. May also be provided via HASHICUPS_USERNAME environment variable.",
+				Description:         "Username for HashiCups API. May also be provided via HASHICUPS_USERNAME environment variable.",
 			},
 			"password": schema.StringAttribute{
 				Optional:            true,
 				Validators:          []validator.String{},
-				MarkdownDescription: "Password",
+				MarkdownDescription: "Password for HashiCups API. May also be provided via HASHICUPS_PASSWORD environment variable.",
+				Description:         "Password for HashiCups API. May also be provided via HASHICUPS_PASSWORD environment variable.",
 				Sensitive:           true,
 			},
 		},

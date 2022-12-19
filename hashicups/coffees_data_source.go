@@ -26,37 +26,59 @@ func (d *coffeesDataSource) Metadata(_ context.Context, req datasource.MetadataR
 
 func (d *coffeesDataSource) Schema(_ context.Context, req datasource.SchemaRequest, res *datasource.SchemaResponse) {
 	res.Schema = schema.Schema{
+		Description:         "Fetches the list of coffees.",
+		MarkdownDescription: "Fetches the list of coffees.",
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "Placeholder identifier attribute.",
+				MarkdownDescription: "Placeholder identifier attribute.",
 			},
 			"coffees": schema.ListNestedAttribute{
+				Description:         "List of coffees.",
+				MarkdownDescription: "List of coffees.",
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"id": schema.Int64Attribute{
-							Computed: true,
+							Computed:            true,
+							Description:         "Numeric identifier of the coffee.",
+							MarkdownDescription: "Numeric identifier of the coffee.",
 						},
 						"name": schema.StringAttribute{
-							Computed: true,
+							Computed:            true,
+							Description:         "Product name of the coffee.",
+							MarkdownDescription: "Product name of the coffee.",
 						},
 						"teaser": schema.StringAttribute{
-							Computed: true,
+							Computed:            true,
+							Description:         "Fun tagline for the coffee.",
+							MarkdownDescription: "Fun tagline for the coffee.",
 						},
 						"description": schema.StringAttribute{
-							Computed: true,
+							Computed:            true,
+							Description:         "Product description of the coffee.",
+							MarkdownDescription: "Product description of the coffee.",
 						},
 						"price": schema.Float64Attribute{
-							Computed: true,
+							Computed:            true,
+							Description:         "Suggested cost of the coffee.",
+							MarkdownDescription: "Suggested cost of the coffee.",
 						},
 						"image": schema.StringAttribute{
-							Computed: true,
+							Computed:            true,
+							Description:         "URI for an image of the coffee.",
+							MarkdownDescription: "URI for an image of the coffee.",
 						},
 						"ingredients": schema.ListNestedAttribute{
-							Computed: true,
+							Description:         "List of ingredients in the coffee.",
+							MarkdownDescription: "List of ingredients in the coffee.",
+							Computed:            true,
 							NestedObject: schema.NestedAttributeObject{
 								Attributes: map[string]schema.Attribute{
 									"id": schema.Int64Attribute{
-										Computed: true,
+										Computed:            true,
+										Description:         "Numeric identifier of the coffee ingredient.",
+										MarkdownDescription: "Numeric identifier of the coffee ingredient.",
 									},
 								},
 							},
