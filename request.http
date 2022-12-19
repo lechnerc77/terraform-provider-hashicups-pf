@@ -16,9 +16,9 @@ POST {{HASHICUPS_HOST}}/signup
     "password":"test123"
 }
 
-###
+### Sign in/Get Token
 POST {{HASHICUPS_HOST}}/signin 
-Content-Type: application/json
+
 {
     "username":"education", 
     "password":"test123"

@@ -27,6 +27,9 @@ func (d *coffeesDataSource) Metadata(_ context.Context, req datasource.MetadataR
 func (d *coffeesDataSource) Schema(_ context.Context, req datasource.SchemaRequest, res *datasource.SchemaResponse) {
 	res.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"id": schema.StringAttribute{
+				Computed: true,
+			},
 			"coffees": schema.ListNestedAttribute{
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
@@ -94,6 +97,8 @@ func (d *coffeesDataSource) Read(ctx context.Context, req datasource.ReadRequest
 		}
 		state.Coffees = append(state.Coffees, coffeeState)
 	}
+
+	state.ID = types.StringValue("placeholder")
 
 	// Set state
 	diags := resp.State.Set(ctx, state)

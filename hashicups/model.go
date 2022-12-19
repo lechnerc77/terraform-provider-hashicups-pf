@@ -13,6 +13,7 @@ type hashicupsProviderModel struct {
 // coffeesDataSourceModel maps the data source schema data.
 type coffeesDataSourceModel struct {
 	Coffees []coffeesModel `tfsdk:"coffees"`
+	ID      types.String   `tfsdk:"id"`
 }
 
 // coffeesModel maps coffees schema data.
