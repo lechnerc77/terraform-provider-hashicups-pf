@@ -1,0 +1,29 @@
+
+@HASHICUPS_HOST=http://localhost:19090
+@HASHICUPS_USERNAME=education
+@HASHICUPS_PASSWORD=test123
+
+
+### Check Health endpoint
+GET {{HASHICUPS_HOST}}/health
+
+
+### Create a user
+POST {{HASHICUPS_HOST}}/signup 
+
+{
+    "username":"education", 
+    "password":"test123"
+}
+
+### Sign in/Get Token
+POST {{HASHICUPS_HOST}}/signin 
+
+{
+    "username":"education", 
+    "password":"test123"
+}
+
+###
+GET http://localhost:19090/orders/1
+Authorization: 
